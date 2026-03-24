@@ -1,1 +1,0 @@
-print(hex((0xFF << 8) | 0xFE))

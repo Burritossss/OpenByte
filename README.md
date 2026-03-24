@@ -51,7 +51,7 @@ MEMORY LAYOUT
 
 0xFFFE - 0xFFFF : Program Start Pointer - These two bytes tell the computer where the program starts.
 
-High Byte then Low Byte
+Little Endian (low byte stored then high byte stored)
 
 
 FLAGS

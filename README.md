@@ -1,6 +1,9 @@
 # OpenByte
 A hackable, lightweight, 8-bit computer emulator written in python.
 
+
+# WORK IN PROGRESS
+
 GENERAL INFORMATION
 ---
 An 8-bit computer emulator written in python. It's based off of 8-bit systems of the 70's and 80's. It uses a custom written

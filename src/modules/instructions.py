@@ -130,5 +130,5 @@ INSTRUCTIONS = {0x01:lda,
                 0x21:ldy,
                 0x22:sty,
                 0x23:iny,
-                
+                0x61:jmp,        
                 }

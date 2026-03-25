@@ -18,16 +18,26 @@ GETTING STARTED
 --- 
 Python 3+ required
 
-For compiling, either <a href="https://pyinstaller.org/en/stable/">PyInstaller<a> is required or an alternative
+### Compiling
+
+If recompiling, either <a href="https://pyinstaller.org/en/stable/">PyInstaller</a> is required or an alternative
 
 First, download the project either via GIT (git clone https://github.com/Burritossss/OpenByte.git)
+
 or just click on Code at the top, then download zip.
 
-[WORK IN PROGRESS]
+Then, inside of the source folder, all the code for the project should be in there, make any changes you need!
+
+### Running
+If you just want to play around, download a release <a href="https://github.com/Burritossss/OpenByte/releases">here</a>
+
+Then run the EXE.
+
+[TODO, create documentation for how to use said software]
 
 CPU INFO
 ---
-Registers: A, X, Y, Program Counter, Instruction Register, Flags
+Registers: A, X, Y, Program Counter, Instruction Register, Stack Pointer, Flags
 
 Architecture: 8-Bit
 
@@ -75,16 +85,30 @@ xxxxxx1x : Negative Flag - Previous arithmatic was negative
 INSTRUCTION SET
 ---
 0x00 : NOP : No Operation
+
 0x01 : LDA : Load A register with a value from the next memory address
+
 0x02 : STA : Store A register to a value in memory specified by the next two memory values (Little Endian)
+
 0x03 : INA : Increments A register by the value in the next memory address
+
 0x11 : LDX : Loads X register with a value from the next memory address
+
 0x12 : STX : Stores X register to a value in memory specified by the next two memory values (Little Endian)
+
 0x13 : INX : Increments X register by the value in the next memory address
+
 0x21 : LDY : Loads Y regsiter with a value from the next memory address
+
 0x22 : STY : Stores Y Register to a value in memory specified by the next two memory values (Little Endian)
+
 0x23 : INY : Increments the Y register by the value in the next memory address 
+
 0x61 : JMP : Moves the Program Counter to a position in memory specified by the next two memory addresses
+
+0x62 : JSR : Pushes current program counter to stack, then jumps to subroutine specified by the next two memory addresses (Not implemented yet)
+
+0x63 : RSR : Pulls program counter from stack, and returns from the subroutine (Not implemented yet)
 
 
 COPYRIGHT INFORMATION

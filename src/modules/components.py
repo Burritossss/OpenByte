@@ -27,6 +27,8 @@ class CPU:
 
         self.PC:bytes # Program Counter
         self.IR:bytes # Instruction Register
+        self.SP:bytes # Stack Pointer
+
         self.FLAGS:bytes # Flag Register
     
     def reset(self):
@@ -37,6 +39,8 @@ class CPU:
 
         self.PC = (self.memory.read(0xFFFF) << 8) | self.memory.read(0xFFFE)
         self.IR = 0x00
+        self.SP = 0x00
+
         self.FLAGS = 0b00000000
 
     def decode_instructions(self):

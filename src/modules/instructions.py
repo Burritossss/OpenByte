@@ -64,7 +64,7 @@ def ina(cpu:CPU):
 
 def ldx(cpu:CPU):
     '''Load the X register with the next value in memory'''
-    cpu.PC+=1
+    cpu.PC = (cpu.PC + 1) % 0x10000
     cpu.X = cpu.memory.read(cpu.PC)
     cpu.PC = (cpu.PC + 1) % 0x10000
 
@@ -82,14 +82,14 @@ def stx(cpu:CPU):
 
 def inx(cpu:CPU):
     '''Increment the X register'''
-    cpu.X = (cpu.X + 1) % 0x100000
+    cpu.X = (cpu.X + 1) % 0x100
 
     cpu.PC = (cpu.PC + 1) % 0x10000
     
 
 def ldy(cpu:CPU):
     '''Load the Y register with the next value in memory'''
-    cpu.PC+=1
+    cpu.PC = (cpu.PC + 1) % 0x10000
     cpu.Y = cpu.memory.read(cpu.PC)
 
     cpu.PC = (cpu.PC + 1) % 0x10000
@@ -108,14 +108,14 @@ def sty(cpu:CPU):
 
 def iny(cpu:CPU):
     '''Incremenet the Y register'''
-    cpu.Y = (cpu.Y + 1) % 0x100000
+    cpu.Y = (cpu.Y + 1) % 0x100
     cpu.PC = (cpu.PC + 1) % 0x10000
 
 def jmp(cpu:CPU):
     '''Jump to the address defined in the next two bytes'''
-    cpu.PC+=1
+    cpu.PC = (cpu.PC + 1) % 0x10000
     low = cpu.memory.read(cpu.PC)
-    cpu.PC+=1
+    cpu.PC = (cpu.PC + 1) % 0x10000
     high = cpu.memory.read(cpu.PC)
     address = (low << 8) | high
     cpu.PC = address

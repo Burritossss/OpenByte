@@ -31,7 +31,7 @@ Then, inside of the source folder, all the code for the project should be in the
 ### Running
 If you just want to play around, download a release <a href="https://github.com/Burritossss/OpenByte/releases">here</a>
 
-Then run the EXE.
+Extract the file and run the EXE.
 
 [TODO, create documentation for how to use said software]
 
@@ -61,7 +61,7 @@ MEMORY LAYOUT
 
 0xFFFE - 0xFFFF : Program Start Pointer - These two bytes tell the computer where the program starts.
 
-Little Endian (low byte stored then high byte stored)
+Big Endian (low byte stored then high byte stored)
 
 
 FLAGS
@@ -88,23 +88,23 @@ INSTRUCTION SET
 
 0x01 : LDA : Load A register with a value from the next memory address
 
-0x02 : STA : Store A register to a value in memory specified by the next two memory values (Little Endian)
+0x02 : STA : Store A register to a value in memory specified by the next two memory values (Big Endian)
 
 0x03 : INA : Increments A register by the value in the next memory address
 
 0x11 : LDX : Loads X register with a value from the next memory address
 
-0x12 : STX : Stores X register to a value in memory specified by the next two memory values (Little Endian)
+0x12 : STX : Stores X register to a value in memory specified by the next two memory values (Big Endian)
 
 0x13 : INX : Increments X register by the value in the next memory address
 
 0x21 : LDY : Loads Y regsiter with a value from the next memory address
 
-0x22 : STY : Stores Y Register to a value in memory specified by the next two memory values (Little Endian)
+0x22 : STY : Stores Y Register to a value in memory specified by the next two memory values (Big Endian)
 
 0x23 : INY : Increments the Y register by the value in the next memory address 
 
-0x61 : JMP : Moves the Program Counter to a position in memory specified by the next two memory addresses
+0x61 : JMP : Moves the Program Counter to a position in memory specified by the next two memory addresses (Big Endian)
 
 0x62 : JSR : Pushes current program counter to stack, then jumps to subroutine specified by the next two memory addresses (Not implemented yet)
 

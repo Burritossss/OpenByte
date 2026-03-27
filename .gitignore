@@ -1,2 +1,4 @@
-src/modules/__pycache__/instructions.cpython-314.pyc
 src/modules/__pycache__/components.cpython-314.pyc
+src/modules/__pycache__/instructions.cpython-314.pyc
+.vscode/launch.json
+gui.ui

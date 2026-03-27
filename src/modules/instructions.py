@@ -1,35 +1,34 @@
 from typing import *
 
 # Create basic versions of the actual components so that you can see the functions and variables
-if True:
-    class CPU:
-        def __init__(self, memory:Memory):
-            self.memory = memory
+class Memory:
+    def __init__(self, size:bytes=0xFFFF):
+        self.memory:list[bytes] = [0x00]*size
+        self.size = size
 
-            # Register Creation
-            self.A:bytes # Accumulator
-            self.X:bytes # X Register
-            self.Y:bytes # Y Register
+    def write(self, address:bytes, value:bytes, force:bool=False):
+        '''Writes to a place in memory'''
+        if address > 0x9000 and not force:
+            print(f'Unable to write to: {address}. Reason: Read Only.')
+        else:
+            self.memory[address%self.size] = value % 0x100
 
-            self.PC:bytes # Program Counter
-            self.IR:bytes # Instruction Register
-            self.FLAGS:bytes # Flag Register
+    def read(self, address:bytes):
+        '''Reads a place in memory'''
+        return self.memory[address%self.size] % 0x100
 
-    class Memory:
-        def __init__(self, size:bytes=0xFFFF):
-            self.memory:list[bytes] = [0x00]*size
-            self.size = size
+class CPU:
+    def __init__(self, memory:Memory):
+        self.memory = memory
 
-        def write(self, address:bytes, value:bytes, force:bool=False):
-            '''Writes to a place in memory'''
-            if address > 0x9000 and not force:
-                print(f'Unable to write to: {address}. Reason: Read Only.')
-            else:
-                self.memory[address%self.size] = value % 0x100
-        
-        def read(self, address:bytes):
-            '''Reads a place in memory'''
-            return self.memory[address%self.size] % 0x100
+        # Register Creation
+        self.A:bytes # Accumulator
+        self.X:bytes # X Register
+        self.Y:bytes # Y Register
+
+        self.PC:bytes # Program Counter
+        self.IR:bytes # Instruction Register
+        self.FLAGS:bytes # Flag Register
 
 # Go to the very bottom to modify the instructions!
 

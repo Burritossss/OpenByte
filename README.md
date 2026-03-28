@@ -31,14 +31,14 @@ Registers: A, X, Y, Program Counter, Instruction Register, Stack Pointer, Flags
 
 Architecture: 8-Bit
 
-Assembly Version: OpenByte 1.0 Pre-Alpha
+Assembly Version: OpenByte 1.0
 
 
 EMULATOR INFORMATION
 ---
 Language: Python
 
-Version: 1.0.0 Pre-Alpha
+Version: 1.0.0
 
 
 MEMORY LAYOUT

@@ -4,7 +4,7 @@ import sys
 debug=True
 
 # Get the program from the argument
-if len(sys.argv) > 1:
+if len(sys.argv) == 2:
     compiledprog = sys.argv[1]
 else: # Else print a usage message
     print("Usage: python main.py <path to compiled program>")

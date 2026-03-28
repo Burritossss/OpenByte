@@ -50,7 +50,8 @@ def stx(cpu:components.CPU):
 
 def inx(cpu:components.CPU):
     '''Increment the X register'''
-    cpu.x = (cpu.x + 1) % 0x100
+    cpu.pc = (cpu.pc + 1) % 0x10000
+    cpu.x = (cpu.x + cpu.memory.read(cpu.pc)) % 0x100
 
     cpu.pc = (cpu.pc + 1) % 0x10000
     
@@ -76,7 +77,9 @@ def sty(cpu:components.CPU):
 
 def iny(cpu:components.CPU):
     '''Incremenet the Y register'''
-    cpu.y = (cpu.y + 1) % 0x100
+    cpu.pc = (cpu.pc + 1) % 0x10000
+    cpu.y = (cpu.y + cpu.memory.read(cpu.pc)) % 0x100
+
     cpu.pc = (cpu.pc + 1) % 0x10000
 
 def jmp(cpu:components.CPU):

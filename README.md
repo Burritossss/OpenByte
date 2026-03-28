@@ -29,11 +29,7 @@ or just click on Code at the top, then download zip.
 Then, inside of the source folder, all the code for the project should be in there, make any changes you need!
 
 ### Running
-If you just want to play around, download a release <a href="https://github.com/Burritossss/OpenByte/releases">here</a>
-
-Extract the file and run the EXE.
-
-[TODO, create documentation for how to use said software]
+[figure it out]
 
 CPU INFO
 ---

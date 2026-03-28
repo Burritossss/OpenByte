@@ -50,6 +50,6 @@ class CPU:
         if self.IR in INSTRUCTIONS:
             INSTRUCTIONS[self.IR](self)
         else:
-            pass
+            self.PC = (self.PC + 1) % 0x10000
         
             

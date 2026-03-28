@@ -1,48 +1,22 @@
 from typing import *
+import modules.components as components
 
-# Create basic versions of the actual components so that you can see the functions and variables
-class Memory:
-    def __init__(self, size:bytes=0xFFFF):
-        self.memory:list[bytes] = [0x00]*size
-        self.size = size
-
-    def write(self, address:bytes, value:bytes, force:bool=False):
-        '''Writes to a place in memory'''
-        if address > 0x9000 and not force:
-            print(f'Unable to write to: {address}. Reason: Read Only.')
-        else:
-            self.memory[address%self.size] = value % 0x100
-
-    def read(self, address:bytes):
-        '''Reads a place in memory'''
-        return self.memory[address%self.size] % 0x100
-
-class CPU:
-    def __init__(self, memory:Memory):
-        self.memory = memory
-
-        # Register Creation
-        self.A:bytes # Accumulator
-        self.X:bytes # X Register
-        self.Y:bytes # Y Register
-
-        self.PC:bytes # Program Counter
-        self.IR:bytes # Instruction Register
-        self.FLAGS:bytes # Flag Register
-
-# Go to the very bottom to modify the instructions!
 
 # Initiate the instructions variable
 global INSTRUCTIONS
 INSTRUCTIONS:dict[bytes:Callable]
 
-def lda(cpu:CPU):
+def nop(cpu:components.CPU):
+    '''No Operation'''
+    cpu.PC = (cpu.PC + 1) % 0x10000
+
+def lda(cpu:components.CPU):
     '''Load the Accumulator with the next value in memory'''
     cpu.PC = (cpu.PC + 1) % 0x10000
     cpu.A = cpu.memory.read(cpu.PC)
     cpu.PC = (cpu.PC + 1) % 0x10000
 
-def sta(cpu:CPU):
+def sta(cpu:components.CPU):
     '''Stores the accumulator at a memory address specified by the next two memory addresses'''
     cpu.PC = (cpu.PC + 1) % 0x10000
 
@@ -54,20 +28,20 @@ def sta(cpu:CPU):
 
     cpu.PC = (cpu.PC + 1) % 0x10000
 
-def ina(cpu:CPU):
+def ina(cpu:components.CPU):
     '''Increment the A register'''
     cpu.PC = (cpu.PC + 1) % 0x10000
     cpu.A = (cpu.A + cpu.memory.read(cpu.PC)) % 0x100
     
     cpu.PC = (cpu.PC + 1) % 0x10000
 
-def ldx(cpu:CPU):
+def ldx(cpu:components.CPU):
     '''Load the X register with the next value in memory'''
     cpu.PC = (cpu.PC + 1) % 0x10000
     cpu.X = cpu.memory.read(cpu.PC)
     cpu.PC = (cpu.PC + 1) % 0x10000
 
-def stx(cpu:CPU):
+def stx(cpu:components.CPU):
     '''Stores the X register at a memory address specified by the next two memory addresses'''
     cpu.PC = (cpu.PC + 1) % 0x10000
 
@@ -79,21 +53,21 @@ def stx(cpu:CPU):
 
     cpu.PC = (cpu.PC + 1) % 0x10000
 
-def inx(cpu:CPU):
+def inx(cpu:components.CPU):
     '''Increment the X register'''
     cpu.X = (cpu.X + 1) % 0x100
 
     cpu.PC = (cpu.PC + 1) % 0x10000
     
 
-def ldy(cpu:CPU):
+def ldy(cpu:components.CPU):
     '''Load the Y register with the next value in memory'''
     cpu.PC = (cpu.PC + 1) % 0x10000
     cpu.Y = cpu.memory.read(cpu.PC)
 
     cpu.PC = (cpu.PC + 1) % 0x10000
 
-def sty(cpu:CPU):
+def sty(cpu:components.CPU):
     '''Stores the Y register at a memory address specified by the next two memory addresses'''
     cpu.PC = (cpu.PC + 1) % 0x10000
 
@@ -105,12 +79,12 @@ def sty(cpu:CPU):
 
     cpu.PC = (cpu.PC + 1) % 0x10000
 
-def iny(cpu:CPU):
+def iny(cpu:components.CPU):
     '''Incremenet the Y register'''
     cpu.Y = (cpu.Y + 1) % 0x100
     cpu.PC = (cpu.PC + 1) % 0x10000
 
-def jmp(cpu:CPU):
+def jmp(cpu:components.CPU):
     '''Jump to the address defined in the next two bytes'''
     cpu.PC = (cpu.PC + 1) % 0x10000
     low = cpu.memory.read(cpu.PC)
@@ -120,7 +94,9 @@ def jmp(cpu:CPU):
     cpu.PC = address
 
 
-INSTRUCTIONS = {0x01:lda,
+INSTRUCTIONS = {
+                0x00:nop,
+                0x01:lda,
                 0x02:sta,
                 0x03:ina,
                 0x11:ldx,

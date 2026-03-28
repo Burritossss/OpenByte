@@ -20,13 +20,7 @@ Python 3+ required
 
 ### Compiling
 
-If recompiling, either <a href="https://pyinstaller.org/en/stable/">PyInstaller</a> is required or an alternative
-
-First, download the project either via GIT (git clone https://github.com/Burritossss/OpenByte.git)
-
-or just click on Code at the top, then download zip.
-
-Then, inside of the source folder, all the code for the project should be in there, make any changes you need!
+[still writing]
 
 ### Running
 [figure it out]

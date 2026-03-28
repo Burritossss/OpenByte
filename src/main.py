@@ -1,14 +1,14 @@
 from modules.components import *
 import sys
-import os
 
-global DEBUG
-DEBUG=True
+debug=True
+
+# Get the program from the argument
 if len(sys.argv) > 1:
     compiledprog = sys.argv[1]
-else:
+else: # Else print a usage message
     print("Usage: python main.py <path to compiled program>")
-    quit()
+    sys.exit(0)
 
 memory = Memory() # Initilize Memory
 
@@ -31,8 +31,8 @@ cpu.reset() # and reset it
 # Loop
 while True:
     cpu.decode_instructions()
-    if DEBUG:
-        print(f"A: {hex(cpu.A)}, X: {hex(cpu.X)}, Y: {hex(cpu.Y)}, PC: {hex(cpu.PC)}, IR: {hex(cpu.IR)}, SP: {hex(cpu.SP)}")
+    if debug:
+        print(f"A: {hex(cpu.a)}, X: {hex(cpu.x)}, Y: {hex(cpu.y)}, PC: {hex(cpu.pc)}, IR: {hex(cpu.ir)}, SP: {bin(cpu.sp)}")
         input("Press Enter to continue...")
 
 

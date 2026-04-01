@@ -1,4 +1,4 @@
-from modules.instructions import INSTRUCTIONS
+from . import instructions
 
 class Memory:
     def __init__(self, size:int=0xFFFF):
@@ -6,7 +6,8 @@ class Memory:
         self.size = size
 
     def write(self, address:int, value:int, force:bool=False):
-        '''Writes to a place in memory'''
+        '''Writes to a place in memory\n
+        Use force if trying to write to an unwritable piece of memory (ROM)'''
         if address > 0x9000 and not force:
             print(f'Unable to write to: {address}. Reason: Read Only.')
         else:
@@ -39,7 +40,7 @@ class CPU:
 
         self.pc = (self.memory.read(0xFFFF) << 8) | self.memory.read(0xFFFE)
         self.ir = 0x00
-        self.sp = 0x00
+        self.sp = 0xFF
 
         self.flags = 0b00000000
 
@@ -47,9 +48,8 @@ class CPU:
         '''Decodes instructions inside of Memory'''
         self.ir = self.memory.read(self.pc)
 
-        if self.ir in INSTRUCTIONS:
-            INSTRUCTIONS[self.ir](self)
-        else:
+        if self.ir in instructions.INSTRUCTIONS:
             self.pc = (self.pc + 1) % 0x10000
-        
-            
+            instructions.INSTRUCTIONS[self.ir](self)
+        else:
+            raise Exception(f"Unknown instruction: {self.ir}")

@@ -14,6 +14,8 @@ The purpose of this project is to create an easy to read and use 8-bit emulator 
 
 To clone, check out [Getting Started](#getting-started)
 
+For compiling an assembly program, I would suggest using <a href="https://github.com/hlorenzi/customasm">customasm</a> as it is a really easy to use assembler.
+
 GETTING STARTED
 --- 
 Python 3+ required
@@ -24,6 +26,12 @@ Python 3+ required
 
 ### Running
 [figure it out]
+
+### Editing
+If you want to expand on this project, follow the instructions below:
+- Open the instructions.py file inside of src/modules/
+
+[still writing]
 
 CPU INFO
 ---
@@ -51,7 +59,7 @@ MEMORY LAYOUT
 
 0xFFFE - 0xFFFF : Program Start Pointer - These two bytes tell the computer where the program starts.
 
-Big Endian (low byte stored then high byte stored)
+Little Endian
 
 
 FLAGS
@@ -96,9 +104,9 @@ INSTRUCTION SET
 
 0x61 : JMP : Moves the Program Counter to a position in memory specified by the next two memory addresses (Big Endian)
 
-0x62 : JSR : Pushes current program counter to stack, then jumps to subroutine specified by the next two memory addresses (Not implemented yet)
+0x62 : JSR : Pushes current program counter to stack, then jumps to subroutine specified by the next two memory addresses
 
-0x63 : RSR : Pulls program counter from stack, and returns from the subroutine (Not implemented yet)
+0x63 : RSR : Pulls program counter from stack, and returns from the subroutine
 
 
 COPYRIGHT INFORMATION

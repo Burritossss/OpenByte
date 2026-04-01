@@ -21,9 +21,6 @@ with open(compiledprog, 'rb') as program:
 
 program.close()
 
-memory.write(0xFFFF, 0x90, True) # Write the program start High
-memory.write(0xFFFE, 0x00, True) # Write the program start Low
-
 # Initilize the cpu
 cpu = CPU(memory)
 cpu.reset() # and reset it
@@ -32,7 +29,7 @@ cpu.reset() # and reset it
 while True:
     cpu.decode_instructions()
     if debug:
-        print(f"A: {hex(cpu.a)}, X: {hex(cpu.x)}, Y: {hex(cpu.y)}, PC: {hex(cpu.pc)}, IR: {hex(cpu.ir)}, SP: {bin(cpu.sp)}")
+        print(f"A: {hex(cpu.a)}, X: {hex(cpu.x)}, Y: {hex(cpu.y)}, PC: {hex(cpu.pc)}, IR: {hex(cpu.ir)}, SP: {hex(cpu.sp)}, Flags: {bin(cpu.flags)}")
         input("Press Enter to continue...")
 
 

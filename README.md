@@ -14,8 +14,6 @@ The purpose of this project is to create an easy to read and use 8-bit emulator 
 
 To clone, check out [Getting Started](#getting-started)
 
-For compiling an assembly program, I would suggest using <a href="https://github.com/hlorenzi/customasm">customasm</a> as it is a really easy to use assembler.
-
 GETTING STARTED
 --- 
 Python 3+ required

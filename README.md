@@ -106,7 +106,3 @@ INSTRUCTION SET
 
 0x63 : RSR : Pulls program counter from stack, and returns from the subroutine
 
-
-COPYRIGHT INFORMATION
----
-<a href="https://github.com/Burritossss/OpenByte">OpenByte</a> © 2025 by <a href="https://github.com/Burritossss">Clayton Beatty</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International</a><img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/by.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/nc.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;"><img src="https://mirrors.creativecommons.org/presskit/icons/sa.svg" alt="" style="max-width: 1em;max-height:1em;margin-left: .2em;">

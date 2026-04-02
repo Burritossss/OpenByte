@@ -77,9 +77,34 @@ Register Specific
     - 0x22 : STY : Stores Y Register to a value in memory specified by the next two memory values
     - 0x23 : INY : Increments the Y Register by the value in the next memory address 
 
+<<<<<<< HEAD
 Flow Control
 - 0x00 : NOP : No Operation
 - Jumping
     - 0x61 : JMP : Moves the Program Counter to a position in memory specified by the next two memory addresses
     - 0x62 : JSR : Pushes current program counter to stack, then jumps to subroutine specified by the next two memory addresses
     - 0x63 : RSR : Pulls program counter from stack, and returns from the subroutine
+=======
+0x02 : STA : Store A register to a value in memory specified by the next two memory values (Big Endian)
+
+0x03 : INA : Increments A register by the value in the next memory address
+
+0x11 : LDX : Loads X register with a value from the next memory address
+
+0x12 : STX : Stores X register to a value in memory specified by the next two memory values (Big Endian)
+
+0x13 : INX : Increments X register by the value in the next memory address
+
+0x21 : LDY : Loads Y regsiter with a value from the next memory address
+
+0x22 : STY : Stores Y Register to a value in memory specified by the next two memory values (Big Endian)
+
+0x23 : INY : Increments the Y register by the value in the next memory address 
+
+0x61 : JMP : Moves the Program Counter to a position in memory specified by the next two memory addresses (Big Endian)
+
+0x62 : JSR : Pushes current program counter to stack, then jumps to subroutine specified by the next two memory addresses
+
+0x63 : RSR : Pulls program counter from stack, and returns from the subroutine
+
+>>>>>>> 23c2e3a0fbd5b478b18eb6eb127664182149ab02

@@ -3,6 +3,8 @@ import sys
 
 debug=True
 
+print('OpenByte Emulator v1.0.0')
+
 # Get the program from the argument
 if len(sys.argv) == 2:
     compiledprog = sys.argv[1]

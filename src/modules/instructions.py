@@ -119,3 +119,10 @@ INSTRUCTIONS:dict[int,Callable[[components.CPU], None]] = {
                 0x62:jsr,
                 0x63:rsr,
                 }
+
+# =========================================== Metadata - Used with the Compiler ===========================================
+OPERAND_SIZE:dict[str,int] = {
+    "nop": 0, "lda": 1, "sta": 2, "ina": 1,
+    "ldx": 1, "stx": 2, "inx": 1, "ldy": 1,
+    "sty": 2, "iny": 1, "jmp": 2, "jsr": 2, "rsr": 0
+}

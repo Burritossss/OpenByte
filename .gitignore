@@ -1,4 +1,1 @@
 .vscode
-src/examples/example.asm
-src/assembler/newprogram.bin
-src/assembler/compiler.py
